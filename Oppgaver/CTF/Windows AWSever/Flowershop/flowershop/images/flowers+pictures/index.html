@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<title>详细信息</title>
+<meta content="text/html; charset=gb2312" http-equiv="Content-Type" />
+<meta content="No-cach" http-equiv="Pragma" />
+<meta content="all" name="robots" />
+<meta content="zxzhang5(at)mail.ustc.edu.cn,张志翔" name="author" />
+<meta content="bookcd随书光盘系统" name="description" />
+<meta content="bookcd,随书光盘" name="keywords" />
+<link rel="stylesheet" href="/bookcd/style.css" type="text/css" media="all" />
+</head>
+
+<body>
+<div id="container"><div id="header">
+<div id="logo">
+<div id="link" >
+<p onclick="add_favorite()" style="cursor: pointer">加入收藏</p>
+<p style="cursor: pointer"><a target="_blank"  href=mailto:nzyao@ustc.edu.cn>联系我们</a></p>
+<p style="cursor: pointer"><a href="/bookcd/admin/">系统管理</a></p>
+</div>
+</div>
+<div id="nav">
+<form action="/bookcd/simsearch.php" method="get" >
+	  <ul>
+	    <li><a href="/bookcd/index.php">主页</a></li>
+	    <li />
+	    <li />
+	    <li><a href="/bookcd/faq.php">系统帮助</a></li>
+	    <li />
+	    <li />
+	    <li><a href="/bookcd/request.php">请求发布</a></li>
+	    <li />
+	    <li />
+	    <li><a href="/bookcd/tools.php">工具下载</a></li>
+	    <li />
+	    <li />
+	    <li><a href="/bookcd/seniorsearch.php">高级搜索</a></li>
+	    <li />
+	    <li />
+	    <li><select name="secid">
+			<option value="">所有分类</option>
+
+			<option value="1" >未命名</option>
+			<option value="2" >windows</option>
+			<option value="3" >linux</option>
+			<option value="5" >test</option>
+			<option value="6" >test</option>
+			<option value="7" >一流图书馆</option>
+		    </select></li>	    
+	    <li><select name="class" >
+					<option value="all">搜索方式</option>
+					<option value="title">题&nbsp;&nbsp;名</option>
+					<option value="author">著&nbsp;&nbsp;者</option>
+					<option value="subject">主题词</option>
+					<option value="intro">简&nbsp;&nbsp;介</option>
+					<option value="publisher">出版社</option>
+					<option value="call_no" >索书号</option>
+					<option value="bookisbn">ISBN号</option>					
+				</select>
+		</li>
+		<li><input name="key" id="key" class="input" onmouseover="this.focus()" onfocus="this.select()" onclick="this.value='';this.style.color='#000000'" value="请您输入关键字" /></li>
+		<li><input type="submit" class="button2" value="搜 索" /></li>
+	  </ul>
+</form>	  
+	</div>
+</div>
+<div id="main"><script type="text/javascript" src="js/class.js"></script>
+<script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript">
+<!-- 
+var version = "other" 
+browserName = navigator.appName;    
+browserVer = parseInt(navigator.appVersion); 
+if (browserName == "Netscape" && browserVer >= 3) version = "n3"; 
+else if (browserName == "Netscape" && browserVer < 3) version = "n2"; 
+else if (browserName == "Microsoft Internet Explorer" && browserVer >= 4) version = "e4"; 
+else if (browserName == "Microsoft Internet Explorer" && browserVer < 4) version = "e3"; 
+function show(objname){
+  var obj = document.getElementById(objname);
+  var r=document.getElementById('root');
+  obj.style.display = "block";
+  r.src="images/minus.gif";
+}
+function hide(objname){
+  var obj = document.getElementById(objname);
+  var r=document.getElementById('root');
+  obj.style.display = "none";
+  r.src="images/plus.gif";
+}
+function showHide(objname){
+  var obj = document.getElementById(objname);
+  var r=document.getElementById('root');
+  if(obj.style.display == "block"){
+	   obj.style.display = "none";
+	   r.src="images/plus.gif";
+	   }
+  else{
+	   obj.style.display = "block";
+	   r.src="images/minus.gif";
+	   }
+}
+//--> 
+</script>
+
+<div id="left">
+<div class="block">
+<h6 class="bar">系统公告</h6>
+<p>欢迎使用随书光盘系统，如果您所需要的光盘没有，请联系nzyao@ustc.edu.cn，需要提供书的索书号和ISBN号。下面是一些常见的问题：<br/></p>
+</div>
+<div class="block">
+<h6 class="bar">必备工具下载</h6>
+<p>
+
+<a href="/bookcd/soft/Daemon.exe">Daemon Tools</a><br />
+<a href="/bookcd/soft/Netiso.exe">Netiso</a><br />
+</p>
+</div>
+<div class="block">
+<h6 class="bar">资源分类目录树</h6>
+<div ><a href="javascript:show('tree');sweeptoggle('expand')">全部展开</a>/<a href="javascript:show('tree');sweeptoggle('contract')">一级分类/<a href="javascript:sweeptoggle('contract');hide('tree');">全部收起</a>
+</div>
+<div><img onclick="showHide('tree')" src="images/plus.gif" id="root"/> <span onclick="showHide('tree')" >所有分类</span></div>
+<div id="tree" style="display:none">
+<script type="text/javascript">
+<!-- 
+for (i=0;i<priclass.length ;i++ )
+{
+	document.write("<div ><img name=\"image"+i+"\"src=\"images/minus.gif\" class=\"showstate\" onClick=\"expandcontent(this, 'sc"+ i +"')\"> <span class=\"showstate\" onclick=\"expandcontent(image" + i + ",'sc" + i + "')\">"+priclass[i]+"</span></div> <div id=\"sc"+ i +"\" class=\"switchcontent\">");
+	for (j=0;j<secclass[i].length ;j++ )
+	{
+		document.write("└ <a href=\"index.php?secid="+secclassid[i][j]+"\">"+secclass[i][j]+"</a><br />");
+
+	}
+	document.write("</div>");
+}
+//--> 
+</script>
+</div>
+</div>
+<div class="block">
+<h6 class="bar">点击排行 Top10</h6>
+<ul id="top10">
+
+<li ><a href="intro.php?id=34">15分钟英文早操</a></li>
+<li ><a href="intro.php?id=19">德语入门</a></li>
+<li ><a href="intro.php?id=1984">After Effects 7.0从新手到高手</a></li>
+<li ><a href="intro.php?id=27">一石五鸟巧记英语单词</a></li>
+<li ><a href="intro.php?id=331">Linux宝典</a></li>
+<li ><a href="intro.php?id=955">音乐艺术人生</a></li>
+<li ><a href="intro.php?id=1700">走遍法国</a></li>
+<li ><a href="intro.php?id=504">新编Photoshop CS数码照片处理典型实例</a></li>
+<li ><a href="intro.php?id=1095">VC++深入详解</a></li>
+<li ><a href="intro.php?id=398">新手学制作网页常见问题与技巧1000例</a></li>
+</ul>
+</div>
+
+</div>
+<div id="right">
+<div class="block">
+<h6 class="bar">资 源 详 细 信 息</h6>
+<table cellpadding="5"  cellspacing="0" border="1" rules="rows" width="100%" id="info">
+	<tr>
+		<th>题名:</th>
+		<td>Web入侵安全测试与对策</td>
+	</tr>
+	<tr>
+		<th>著者:</td>
+		<td>Mike Andrews, James A. Whittaker著</td>
+	</tr>
+	<tr>
+		<th>出版社:</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>分类:</td>
+		<td> 未命名</td>
+	</tr>
+	<tr>
+		<th>索书号:</td>
+		<td>73.975/481</td>
+	</tr>
+	<tr>
+		<th>ISBN:</td>
+		<td>7-302-13874-5</td>
+	</tr>
+	<tr>
+		<th>修改日期:</td>
+		<td>2007-03-19</td>
+	</tr>
+	<tr>
+		<th>主题词:</td>
+		<td> 计算机网络</td>
+	</tr>
+	<tr>
+	<th/>
+		<td> <a href="http://202.38.74.4/opac/item.php?marc_no=0000384923" target="_blank"><img src="/bookcd/images/bookinfo.gif" alt="查看图书馆藏信息" border="0">点此查看对应书籍馆藏信息</a>
+</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;&nbsp;</td>
+	</tr>	
+    </table>
+</div>
+<div class="block">
+<h6 class="bar"></h6>
+<table cellpadding="5"  cellspacing="0" border="1" width="100%">
+ <tr>
+ <th width="25%">文件名称</th>
+ <th width="25%">更新日期</th>
+ <th width="25%">大&nbsp;小</th>
+ <th width="25%"></th>
+ </tr> 
+<tr>
+<td colspan="4">&nbsp;<a href=../>返回上层目录</a></td>
+</tr>
+
+</table>
+</div>
+</div>
+
+
+
+
+
+</div>
+<div id="footer" >
+<ul>
+<li>您是<font face="幼圆" color="#0000FF">9953</font>位访问者</li>
+<li><font color="#FF0000">&copy;all copyright reseverd</font> 中国科学技术大学图书馆</li>
+<li>电话:&nbsp;0551-3606494&nbsp;&nbsp;Email:&nbsp;<a target="_blank"  href="mailto:nzyao@ustc.edu.cn">nzyao@ustc.edu.cn</a></li>
+</ul>
+</div></div>
+</body>
+</html>
